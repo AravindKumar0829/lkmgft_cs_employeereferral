@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-deployenv
+  labels:
+    app: tomcat-deployenv
+  namespace: builduser
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tomcat-deployenv
+  template:
+    metadata:
+      labels:
+        app: tomcat-deployenv
+    spec:
+      imagePullSecrets:
+        - name: gcrcred
+      containers:
+      - name: tomcat-deployenv
+        image: localhost:32121/root/docker_registry/java:deployenv
+        ports:
+        - containerPort: 8080

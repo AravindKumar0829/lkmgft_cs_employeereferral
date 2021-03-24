@@ -1,0 +1,264 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>1003_CS_EmployeeReferral</groupId>
+  <artifactId>1003_CS_EmployeeReferral</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+		<!-- Repositories -->
+	<repositories>
+		<repository>
+			<id>JackSonRepo</id>
+			<url>https://mvnrepository.com/artifact/</url>
+		</repository>
+		
+	</repositories>
+	<!-- Configuring Java 8 version -->
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<cst.hibernate.version>4.3.11.Final</cst.hibernate.version>
+		<cst.spring.version>4.2.4.RELEASE</cst.spring.version>
+		<cst.bean.validation.api>1.1.0.Final</cst.bean.validation.api>
+		<cst.hibernate.validator>5.1.2.Final</cst.hibernate.validator>
+		<cst.junit.version>4.12</cst.junit.version>
+		<cst.jsp.version>2.3.1</cst.jsp.version>
+		<cst.jstl.version>1.2</cst.jstl.version>
+		<cst.servlet.version>3.1.0</cst.servlet.version>
+		
+		<cst.mockito.all.version>1.10.19</cst.mockito.all.version>
+		<cst.mockito.core.version>2.7.2</cst.mockito.core.version>
+		<cst.hamcrest.version>1.3</cst.hamcrest.version>
+		<cst.byte.buddy.version>1.7.5</cst.byte.buddy.version>
+		
+		<cst.jackson.api>2.7.3</cst.jackson.api>
+		<cst.classmate.api>1.0.0</cst.classmate.api>
+		<cst.mysql.connector.version>5.1.30</cst.mysql.connector.version>
+		<cst.spring.data.commens>1.5.3.RELEASE</cst.spring.data.commens>
+		<cst.spring.data.jpa>1.3.0.RELEASE</cst.spring.data.jpa>
+		<cst.log4j>1.2.17</cst.log4j>
+	</properties>
+
+	<dependencies>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${cst.spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${cst.spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${cst.spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${cst.spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${cst.spring.version}</version>
+		</dependency>
+
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${cst.hibernate.version}</version>
+		</dependency>
+		
+		<dependency>
+   			<groupId>org.hibernate</groupId>
+   			<artifactId>hibernate-entitymanager</artifactId>
+   			<version>${cst.hibernate.version}</version>
+		</dependency>
+
+		<!-- jsr303 validation -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${cst.bean.validation.api}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${cst.hibernate.validator}</version>
+		</dependency>
+
+		<!-- MySQL -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${cst.mysql.connector.version}</version>
+		</dependency>
+
+		<!-- Servlet+JSP+JSTL -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${cst.servlet.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>${cst.jsp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${cst.jstl.version}</version>
+		</dependency>
+
+
+		<!-- Testing dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${cst.spring.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${cst.junit.version} </version>
+			<scope>test</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>${cst.mockito.all.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${cst.mockito.core.version}</version>
+			<scope>test</scope>
+		</dependency>
+	
+		<dependency>
+		    <groupId>net.bytebuddy</groupId>
+		    <artifactId>byte-buddy</artifactId>
+		    <version>${cst.byte.buddy.version}</version>
+		    <scope>test</scope>
+		</dependency>
+
+		
+		<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
+		<dependency>
+		    <groupId>org.hamcrest</groupId>
+		    <artifactId>hamcrest-all</artifactId>
+		    <version>${cst.hamcrest.version}</version>
+		    <scope>test</scope>
+		</dependency>
+
+		
+		<!-- Jackson Parser dependencies -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${cst.jackson.api}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${cst.jackson.api}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${cst.jackson.api}</version>
+		</dependency>
+		
+		<!-- Spring JPA Data related -->	
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-jpa</artifactId>
+		    <version>${cst.spring.data.jpa}</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.springframework.data</groupId>
+    		<artifactId>spring-data-commons</artifactId>
+    		<version>${cst.spring.data.commens}</version>
+		</dependency>
+		<!-- Log4j  -->
+		<dependency>
+    		<groupId>log4j</groupId>
+    		<artifactId>log4j</artifactId>
+   			<version>${cst.log4j}</version>
+		</dependency>
+		
+		
+	</dependencies>
+
+
+	<build>
+		<sourceDirectory>${basedir}\src</sourceDirectory>
+		<testSourceDirectory>${basedir}\test</testSourceDirectory>
+		<resources>
+			<resource>
+				<directory>${basedir}\src</directory>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>${basedir}\test</directory>
+			</testResource>
+		</testResources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+					<execution>
+						<configuration>
+							<!-- <webXml>${basedir}/WebContent/WEB-INF/web.xml</webXml> -->
+							<failOnMissingWebXml>true</failOnMissingWebXml>
+							<webResources>
+								<resource>
+									<directory>${basedir}/WebContent</directory> 
+								</resource>
+							</webResources>
+						</configuration>
+						<id>default-war</id>
+						<phase>package</phase>
+						<goals>
+							<goal>war</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.2</version>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>prepare-agent</goal>
+                </goals>
+            </execution>
+            <!-- attached to Maven test phase -->
+            <execution>
+                <id>report</id>
+                <phase>test</phase>
+                <goals>
+                    <goal>report</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+		</plugins>
+	</build>
+
+</project>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0"
+	xmlns="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<named-query name="skillLevel">
+		<query>Select K from SkillSetEntity K where K.skill = ?1 and K.level = ?2</query>
+	</named-query>
+
+	<named-query name="skillsQuery">
+		<query>Select distinct K.skill from SkillSetEntity K </query>
+	</named-query>
+
+	<named-query name="employeeReferralsInDateRange">
+		<query>Select e from EmployeeEntity e where e.empDor between ?1 and ?2</query>
+	</named-query>
+
+</entity-mappings>

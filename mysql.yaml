@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: builduser
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: buildenv
+  clusterIP: None
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: buildenv
+  namespace: builduser
+spec:
+  selector:
+    matchLabels:
+      app: buildenv
+  template:
+    metadata:
+      
+      labels:
+        app: buildenv
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: buildenv
+        env:
+          # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        ports:
+        - containerPort: 3306
+          name: builddb
+        volumeMounts:
+        - name: builddb
+          mountPath: /var/lib/mysql
+          subPath: mysqldb
+      volumes:
+      - name: builddb
+        persistentVolumeClaim:
+          claimName: builddb

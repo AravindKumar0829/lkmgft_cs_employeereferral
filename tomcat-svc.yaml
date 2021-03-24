@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: tomcat-deployenv
+  namespace: builduser
+spec:
+  type: LoadBalancer
+  selector:
+    app: tomcat-deployenv
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
