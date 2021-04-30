@@ -19,6 +19,6 @@ spec:
         - name: gcrcred
       containers:
       - name: tomcat-deployenv
-        image: localhost:32121/root/docker_registry/java:deployenv
+        image: localhost:32121/root/docker_registry/java:deployenvnum
         ports:
         - containerPort: 8080

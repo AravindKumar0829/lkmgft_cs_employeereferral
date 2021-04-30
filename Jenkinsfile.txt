@@ -48,6 +48,7 @@ containers: [containerTemplate(name: 'maven', image: 'maven:3-jdk-8', ttyEnabled
             sed -i "s/builduser/${BUILDUSER}/g" namespace.yaml
             sed -i "s/builduser/${BUILDUSER}/g" mysql.yaml
             sed -i "s/builduser/${BUILDUSER}/g" mysql-pvc.yaml
+			sed -i "s/deployenvnum/${BUILD_NUMBER}${BUILDUSER}${deploy_env}/g" tomcat.yaml
 		    '''
 		}
 			}
@@ -91,13 +92,22 @@ containers: [containerTemplate(name: 'maven', image: 'maven:3-jdk-8', ttyEnabled
 		{
 			container('docker')
 			{
-				sh ("docker build -t localhost:32121/root/docker_registry/java:${deploy_env} .")
+				sh '''
+                committerEmail='''+ committerEmail +'''
+                BUILDUSER=`echo $committerEmail | awk -F@ '{print $1}'`
+                docker build -t localhost:32121/root/docker_registry/java:${BUILD_NUMBER}${BUILDUSER}${deploy_env} .
+                '''
 				withCredentials([[$class: 'UsernamePasswordMultiBinding',
                 credentialsId: 'gitlab',
                 usernameVariable: 'DOCKER_HUB_USER',
                 passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
                     sh ('docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD} '+GCR_HUB_ACCOUNT )
-				sh ("docker push localhost:32121/root/docker_registry/java:${deploy_env}")
+				sh '''
+				committerEmail='''+ committerEmail +'''
+				BUILDUSER=`echo $committerEmail | awk -F@ '{print $1}'`
+				docker push localhost:32121/root/docker_registry/java:${BUILD_NUMBER}${BUILDUSER}${deploy_env}
+				'''
+				
 			}
 			}
 			container('kubectl'){
