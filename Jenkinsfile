@@ -13,7 +13,7 @@ containers: [containerTemplate(name: 'maven', image: 'maven:3-jdk-8', ttyEnabled
 			  
 {
 	node(label) {
-		def GIT_URL="http://gitlab.ethan.svc.cluster.local:8084/gitlab/root/lkmgft_cs_employeereferral.git"
+		def GIT_URL="http://gitlab.ethan.svc.cluster.local:8084/gitlab/java13317851/lkmgft_cs_employeereferral.git"
 		def GIT_CREDENTIAL_ID ='gitlab'
 		def GIT_BRANCH='master'
 		def deploy_env="${deploy_env}"
